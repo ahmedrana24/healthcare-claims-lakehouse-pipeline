@@ -1,0 +1,70 @@
+# ==========================
+# Python
+# ==========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# ==========================
+# Virtual Environment
+# ==========================
+
+venv/
+.env
+.venv/
+
+
+# ==========================
+# Airflow
+# ==========================
+
+airflow.cfg
+airflow.db
+airflow_logs/
+logs/
+
+
+# ==========================
+# Spark
+# ==========================
+
+.spark/
+metastore_db/
+spark-warehouse/
+
+
+# ==========================
+# Generated Data
+# ==========================
+
+data/bronze/
+data/silver/
+data/gold/
+data/quarantine/
+
+
+# ==========================
+# Temporary Files
+# ==========================
+
+*.tmp
+*.log
+*.checkpoint
+
+
+# ==========================
+# IDE
+# ==========================
+
+.vscode/
+.idea/
+
+
+# ==========================
+# OS Files
+# ==========================
+
+.DS_Store
+Thumbs.db
