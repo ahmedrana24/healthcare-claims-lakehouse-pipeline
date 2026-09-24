@@ -6,6 +6,11 @@ This project demonstrates how healthcare claims data can be ingested incremental
 
 ---
 
+# Architecture
+
+![Healthcare Claims Lakehouse Architecture](docs/architecture.png)
+
+
 # Business Problem
 
 Healthcare organizations process large volumes of claims data from multiple operational systems. Traditional batch processing approaches create challenges around:
