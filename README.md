@@ -1,9 +1,13 @@
-````markdown
+You're right — let's fix it properly. The issue was likely formatting corruption. Use this **clean README from the first line**. Copy the entire block and replace your `README.md`.
+
+```markdown
 # 🏥 Healthcare Claims Lakehouse Pipeline
 
-![Healthcare Claims Dashboard](docs/screenshots/executive_overview.png)
+<p align="center">
+  <img src="docs/screenshots/executive_overview.png" width="900"/>
+</p>
 
-A production-style **Healthcare Claims Lakehouse Analytics Platform** built using modern data engineering practices. This project demonstrates an end-to-end healthcare data pipeline that ingests claims data, applies **Medallion Architecture**, performs automated data quality validation, creates business-ready Gold analytics datasets, and delivers executive insights through an interactive **Streamlit analytics dashboard**.
+A production-style **Healthcare Claims Lakehouse Analytics Platform** built using modern data engineering practices. This project demonstrates an end-to-end healthcare data pipeline that ingests claims data, applies **Medallion Architecture**, performs automated data quality validation, creates business-ready Gold analytics datasets, and delivers executive insights through an interactive **Streamlit dashboard**.
 
 ---
 
@@ -16,70 +20,84 @@ The Gold analytics layer powers an interactive Streamlit dashboard providing:
 - Provider Performance Analysis
 - Member Utilization Analytics
 
-Dashboard capabilities include:
+Dashboard capabilities:
 
 - Executive KPI monitoring
 - Claims volume analysis
 - Financial impact analysis
 - Provider benchmarking
-- Denial trend analysis
+- Denial analysis
 - Member utilization insights
-- Gold layer analytics exploration
+
+---
+
+# 🖼️ Dashboard Screenshots
+
+## Executive Claims Overview
+
+<p align="center">
+  <img src="docs/screenshots/executive_overview.png" width="900"/>
+</p>
 
 
-## Dashboard Screenshots
+## Denial Analytics
 
-### Executive Claims Overview
-
-![Executive Overview](docs/screenshots/executive_overview.png)
-
-
-### Denial Analytics
-
-![Denial Analytics](docs/screenshots/denial_analytics.png)
+<p align="center">
+  <img src="docs/screenshots/denial_analytics.png" width="900"/>
+</p>
 
 
-### Provider Performance
+## Provider Performance
 
-![Provider Performance](docs/screenshots/provider_performance.png)
+<p align="center">
+  <img src="docs/screenshots/provider_performance.png" width="900"/>
+</p>
 
 
-### Member Utilization
+## Member Utilization
 
-![Member Utilization](docs/screenshots/member_utilization.png)
+<p align="center">
+  <img src="docs/screenshots/member_utilization.png" width="900"/>
+</p>
+
 
 ---
 
 # 🏗️ Architecture
 
-![Healthcare Claims Lakehouse Architecture](docs/architecture.png)
+<p align="center">
+  <img src="docs/architecture.png" width="1200"/>
+</p>
+
 
 The platform follows a **Medallion Lakehouse Architecture**:
 
-```text
+```
+
 Source Systems
-      |
-      v
+|
+v
 PostgreSQL Healthcare Claims Database
-      |
-      v
+|
+v
 Apache Airflow Orchestration
-      |
-      v
+|
+v
 PySpark Processing
-      |
-      v
+|
+v
 Bronze Layer
-      |
-      v
+|
+v
 Silver Layer
-      |
-      v
+|
+v
 Gold Analytics Layer
-      |
-      v
+|
+v
 Streamlit Dashboard
-````
+
+```
 
 ---
 
@@ -89,12 +107,13 @@ Streamlit Dashboard
 
 Healthcare claims data originates from operational healthcare systems:
 
-* Claims Processing System
-* Member Eligibility System
-* Provider Management System
-* Healthcare Event System
+- Claims Processing System
+- Member Eligibility System
+- Provider Management System
+- Healthcare Event System
 
-Source data is stored in a PostgreSQL healthcare claims database.
+
+Data is stored in a PostgreSQL healthcare claims database.
 
 ---
 
@@ -104,15 +123,15 @@ The Bronze layer stores raw healthcare claims data after ingestion.
 
 Responsibilities:
 
-* Raw claims ingestion
-* Source metadata tracking
-* Batch identification
-* Ingestion timestamp tracking
-* Historical preservation
+- Raw claims ingestion
+- Source metadata tracking
+- Batch identification
+- Ingestion timestamp tracking
+- Historical preservation
 
 Storage format:
 
-* Parquet
+- Parquet
 
 ---
 
@@ -122,11 +141,11 @@ The Silver layer applies PySpark transformations to create trusted analytical da
 
 Processing includes:
 
-* Schema standardization
-* Data cleansing
-* Duplicate handling
-* Business rule validation
-* Transformation logic
+- Schema standardization
+- Data cleansing
+- Duplicate handling
+- Business rule validation
+- Transformation logic
 
 ---
 
@@ -134,23 +153,25 @@ Processing includes:
 
 The Gold layer contains curated analytical datasets consumed by the Streamlit dashboard.
 
----
 
 ## Provider Performance Analytics
 
 Dataset:
 
-```text
-gold/provider_performance
 ```
 
-Provides:
+gold/provider_performance
 
-* Provider claim volume
-* Total billed amount
-* Total paid amount
-* Denied claims
-* Denial rates
+```
+
+Includes:
+
+- Provider claim volume
+- Total billed amount
+- Total paid amount
+- Denied claims
+- Denial rates
+
 
 ---
 
@@ -158,16 +179,19 @@ Provides:
 
 Dataset:
 
-```text
-gold/claim_denial_analysis
 ```
 
-Provides:
+gold/claim_denial_analysis
 
-* Claim status analysis
-* Denied claims
-* Denial percentage
-* Financial impact analysis
+```
+
+Includes:
+
+- Claim status analysis
+- Denied claims
+- Denial percentage
+- Financial impact
+
 
 ---
 
@@ -175,17 +199,19 @@ Provides:
 
 Dataset:
 
-```text
-gold/member_utilization
 ```
 
-Provides:
+gold/member_utilization
 
-* Member claim volume
-* Total billed amount
-* Total paid amount
-* Average claim cost
-* Service history
+```
+
+Includes:
+
+- Member claim volume
+- Total billed amount
+- Total paid amount
+- Average claim cost
+- Service history
 
 ---
 
@@ -193,38 +219,39 @@ Provides:
 
 The pipeline uses **Great Expectations** for automated data validation.
 
-Validation checkpoints are implemented throughout the pipeline.
-
----
+Validation checkpoints:
 
 ## Pre-Bronze Validation
 
-Incoming healthcare claims data is validated before entering Bronze storage.
-
-Validation ensures:
-
-* Schema correctness
-* Required fields availability
-* Data consistency
-
-Invalid records are routed to:
-
-```text
-Quarantine Storage
-```
-
----
-
-## Silver Layer Validation
-
-Transformed Silver data is validated before promotion into the Gold analytics layer.
+Validates incoming claims before entering Bronze storage.
 
 Checks include:
 
-* Data completeness
-* Business rule validation
-* Data consistency
-* Transformation accuracy
+- Schema validation
+- Required field validation
+- Data consistency checks
+
+
+Invalid records are routed to:
+
+```
+
+Quarantine Storage
+
+````
+
+---
+
+## Silver Validation
+
+Validates transformed Silver data before promotion into Gold.
+
+Checks include:
+
+- Data completeness
+- Business rule validation
+- Transformation accuracy
+- Data consistency
 
 ---
 
@@ -232,51 +259,42 @@ Checks include:
 
 ## Data Engineering
 
-* Python
-* PySpark
-* Apache Airflow
-* PostgreSQL
-* Parquet
+- Python
+- PySpark
+- Apache Airflow
+- PostgreSQL
+- Parquet
+
 
 ## Data Quality
 
-* Great Expectations
+- Great Expectations
+
 
 ## Analytics
 
-* Streamlit
-* Plotly
-* Pandas
+- Streamlit
+- Plotly
+- Pandas
+
 
 ## DevOps
 
-* Docker
-* GitHub
-* GitHub Actions
+- Docker
+- GitHub
+- GitHub Actions
 
 ---
 
-# 🚀 Running the Project
+# 🚀 Running the Dashboard
 
-## Clone Repository
+Install dependencies:
 
 ```bash
-git clone <repository-url>
+pip install -r dashboard/requirements.txt
+````
 
-cd healthcare-claims-pipeline
-```
-
----
-
-## Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Run Streamlit Dashboard
+Run Streamlit:
 
 ```bash
 streamlit run dashboard/app.py
@@ -284,7 +302,7 @@ streamlit run dashboard/app.py
 
 Dashboard URL:
 
-```text
+```
 http://localhost:8501
 ```
 
@@ -292,48 +310,48 @@ http://localhost:8501
 
 # 📂 Project Structure
 
-```text
+```
 healthcare-claims-pipeline/
 
-├── airflow/
+├── dashboard/
+│   ├── app.py
+│   └── requirements.txt
 │
 ├── data/
 │   ├── bronze/
 │   ├── silver/
 │   └── gold/
 │
-├── dashboard/
-│   └── app.py
-│
 ├── docs/
 │   ├── architecture.png
 │   └── screenshots/
+│       ├── executive_overview.png
+│       ├── denial_analytics.png
+│       ├── provider_performance.png
+│       └── member_utilization.png
 │
-├── great_expectations/
-│
-├── src/
-│
+├── airflow/
+├── scripts/
+├── sql/
 ├── tests/
-│
-├── README.md
-└── requirements.txt
+└── README.md
 ```
 
 ---
 
 # 🔁 CI/CD
 
-GitHub Actions performs automated validation including:
+GitHub Actions validates:
 
-* DAG syntax validation
-* Python script validation
-* Automated testing
+* DAG syntax
+* Python scripts
+* Automated tests
 
 ---
 
 # 🔐 Engineering Controls
 
-Implemented engineering controls:
+Implemented controls:
 
 * Data quality validation checkpoints
 * Pipeline metadata tracking
@@ -352,13 +370,13 @@ This platform enables healthcare organizations to:
 * Monitor provider performance
 * Analyze financial impact
 * Understand member utilization behavior
-* Provide trusted analytics for operational decision-making
+* Deliver trusted analytics for operational decisions
 
 ---
 
 # 👨‍💻 Healthcare Claims Lakehouse Analytics Platform
 
-Built using modern data engineering practices, lakehouse architecture patterns, and analytics engineering principles.
+Built using modern data engineering practices and lakehouse architecture patterns.
 
-```
-```
+````
+
